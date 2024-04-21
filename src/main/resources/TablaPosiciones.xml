@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="https://jakarta.ee/xml/ns/persistence/orm"
+                 version="3.0">
+
+    <entity class="com.example.ldbc41.models.TablaPosiciones">
+        <table name="tabla_posiciones" schema="campeonato" catalog="ldbc41Pruebas"/>
+        <attributes>
+            <id name="id">
+                <column name="id" precision="-1"/>
+            </id>
+            <basic name="equipoId">
+                <column name="equipo_id" nullable="false" precision="-1"/>
+            </basic>
+            <basic name="periodoCampeonato">
+                <column name="periodo_campeonato" nullable="false" precision="-1"/>
+            </basic>
+            <basic name="etapaPartido">
+                <column name="etapa_partido" nullable="false" precision="-1"/>
+            </basic>
+            <basic name="puntosObtenidos">
+                <column name="puntos_obtenidos" nullable="false" precision="-1"/>
+            </basic>
+            <basic name="partidosJugados">
+                <column name="partidos_jugados" nullable="false" precision="-1"/>
+            </basic>
+            <basic name="partidosGanados">
+                <column name="partidos_ganados" nullable="false" precision="-1"/>
+            </basic>
+            <basic name="partidosEmpatados">
+                <column name="partidos_empatados" nullable="false" precision="-1"/>
+            </basic>
+            <basic name="partidosPerdidos">
+                <column name="partidos_perdidos" nullable="false" precision="-1"/>
+            </basic>
+            <basic name="golesAFavor">
+                <column name="goles_a_favor" nullable="false" precision="-1"/>
+            </basic>
+            <basic name="golesEnContra">
+                <column name="goles_en_contra" nullable="false" precision="-1"/>
+            </basic>
+            <basic name="diferenciaDeGoles">
+                <column name="diferencia_de_goles" nullable="false" precision="-1"/>
+            </basic>
+            <many-to-one name="equiposByEquipoId" optional="true" target-entity="com.example.ldbc41.models.Equipo">
+                <join-column name="equipo_id" nullable="false" referenced-column-name="id"/>
+            </many-to-one>
+        </attributes>
+    </entity>
+</entity-mappings>

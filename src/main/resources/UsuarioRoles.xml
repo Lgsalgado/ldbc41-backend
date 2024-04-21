@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="https://jakarta.ee/xml/ns/persistence/orm"
+                 version="3.0">
+
+    <entity class="com.example.ldbc41.models.UsuarioRoles">
+        <table name="usuario_roles" schema="seguridad" catalog="ldbc41Pruebas"/>
+        <attributes>
+            <id name="id">
+                <column name="id" precision="-1"/>
+            </id>
+            <basic name="usuarioId">
+                <column name="usuario_id" nullable="false" precision="-1"/>
+            </basic>
+            <basic name="rolId">
+                <column name="rol_id" nullable="false" precision="-1"/>
+            </basic>
+            <many-to-one name="usuariosByUsuarioId" optional="true" target-entity="com.example.ldbc41.models.Usuarios">
+                <join-column name="usuario_id" nullable="false" referenced-column-name="id"/>
+            </many-to-one>
+            <many-to-one name="rolesByRolId" optional="true" target-entity="com.example.ldbc41.models.Roles">
+                <join-column name="rol_id" nullable="false" referenced-column-name="id"/>
+            </many-to-one>
+        </attributes>
+    </entity>
+</entity-mappings>

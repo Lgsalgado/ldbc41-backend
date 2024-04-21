@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="https://jakarta.ee/xml/ns/persistence/orm"
+                 version="3.0">
+
+    <entity class="com.example.ldbc41.models.Roles">
+        <table name="roles" schema="seguridad" catalog="ldbc41Pruebas"/>
+        <attributes>
+            <id name="id">
+                <column name="id" precision="-1"/>
+            </id>
+            <basic name="nombreRol">
+                <column name="nombre_rol" nullable="false" length="50"/>
+            </basic>
+            <one-to-many name="menusById" mapped-by="rolesByRolId" target-entity="com.example.ldbc41.models.Menu"/>
+            <one-to-many name="usuarioRolesById" mapped-by="rolesByRolId"
+                         target-entity="com.example.ldbc41.models.UsuarioRoles"/>
+        </attributes>
+    </entity>
+</entity-mappings>

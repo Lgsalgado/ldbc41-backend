@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="https://jakarta.ee/xml/ns/persistence/orm"
+                 version="3.0">
+
+    <entity class="com.example.ldbc41.models.ArbitrosPartidos">
+        <table name="arbitros_partidos" schema="campeonato" catalog="ldbc41Pruebas"/>
+        <attributes>
+            <id name="id">
+                <column name="id" precision="-1"/>
+            </id>
+            <basic name="arbitroId">
+                <column name="arbitro_id" nullable="false" precision="-1"/>
+            </basic>
+            <basic name="partidoId">
+                <column name="partido_id" nullable="false" precision="-1"/>
+            </basic>
+            <basic name="calificacion">
+                <column name="calificacion" precision="-1"/>
+            </basic>
+            <many-to-one name="arbitrosByArbitroId" optional="true" target-entity="com.example.ldbc41.models.Arbitros">
+                <join-column name="arbitro_id" nullable="false" referenced-column-name="id"/>
+            </many-to-one>
+            <many-to-one name="partidosByPartidoId" optional="true" target-entity="com.example.ldbc41.models.Partido">
+                <join-column name="partido_id" nullable="false" referenced-column-name="id"/>
+            </many-to-one>
+        </attributes>
+    </entity>
+</entity-mappings>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="https://jakarta.ee/xml/ns/persistence/orm"
+                 version="3.0">
+
+    <entity class="com.example.ldbc41.models.Equipo">
+        <table name="equipos" schema="campeonato" catalog="ldbc41Pruebas"/>
+        <attributes>
+            <id name="id">
+                <column name="id" precision="-1"/>
+            </id>
+            <basic name="colores">
+                <column name="colores" nullable="false" length="100"/>
+            </basic>
+            <basic name="lema">
+                <column name="lema" nullable="false" length="100"/>
+            </basic>
+            <basic name="nombre">
+                <column name="nombre" nullable="false" length="100"/>
+            </basic>
+            <basic name="categoria">
+                <column name="categoria" nullable="false" length="50"/>
+            </basic>
+        </attributes>
+    </entity>
+</entity-mappings>

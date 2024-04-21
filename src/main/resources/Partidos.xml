@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="https://jakarta.ee/xml/ns/persistence/orm"
+                 version="3.0">
+
+    <entity class="com.example.ldbc41.models.Partido">
+        <table name="partidos" schema="campeonato" catalog="ldbc41Pruebas"/>
+        <attributes>
+            <id name="id">
+                <column name="id" precision="-1"/>
+            </id>
+            <basic name="fecha">
+                <column name="fecha" nullable="false" precision="-1"/>
+            </basic>
+            <basic name="equipoLocalId">
+                <column name="equipo_local_id" nullable="false" precision="-1"/>
+            </basic>
+            <basic name="equipoVisitanteId">
+                <column name="equipo_visitante_id" nullable="false" precision="-1"/>
+            </basic>
+            <basic name="resultadoLocal">
+                <column name="resultado_local" nullable="false" precision="-1"/>
+            </basic>
+            <basic name="resultadoVisitante">
+                <column name="resultado_visitante" nullable="false" precision="-1"/>
+            </basic>
+            <basic name="periodoCampeonato">
+                <column name="periodo_campeonato" nullable="false" precision="-1"/>
+            </basic>
+            <basic name="etapaPartido">
+                <column name="etapa_partido" nullable="false" precision="-1"/>
+            </basic>
+            <many-to-one name="equiposByEquipoLocalId" optional="true"
+                         target-entity="com.example.ldbc41.models.Equipo">
+                <join-column name="equipo_local_id" nullable="false" referenced-column-name="id"/>
+            </many-to-one>
+            <many-to-one name="equiposByEquipoVisitanteId" optional="true"
+                         target-entity="com.example.ldbc41.models.Equipo">
+                <join-column name="equipo_visitante_id" nullable="false" referenced-column-name="id"/>
+            </many-to-one>
+            <one-to-many name="arbitrosPartidosById" mapped-by="partidosByPartidoId"
+                         target-entity="com.example.ldbc41.models.ArbitrosPartidos"/>
+            <one-to-many name="goleadoresById" mapped-by="partidosByPartidoId"
+                         target-entity="com.example.ldbc41.models.Goleadores"/>
+            <one-to-many name="sancionesEquiposById" mapped-by="partidosByPartidoId"
+                         target-entity="com.example.ldbc41.models.SancionesEquipos"/>
+            <one-to-many name="sancionesJugadoresById" mapped-by="partidosByPartidoId"
+                         target-entity="com.example.ldbc41.models.SancionesJugadores"/>
+        </attributes>
+    </entity>
+</entity-mappings>

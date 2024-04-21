@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="https://jakarta.ee/xml/ns/persistence/orm"
+                 version="3.0">
+
+    <entity class="com.example.ldbc41.models.Jugadore">
+        <table name="jugadores" schema="campeonato" catalog="ldbc41Pruebas"/>
+        <attributes>
+            <id name="id">
+                <column name="id" precision="-1"/>
+            </id>
+            <basic name="nombre">
+                <column name="nombre" nullable="false" length="100"/>
+            </basic>
+            <basic name="cedula">
+                <column name="cedula" nullable="false" length="20"/>
+            </basic>
+            <basic name="equipoId">
+                <column name="equipo_id" nullable="false" precision="-1"/>
+            </basic>
+            <basic name="fechaNacimiento">
+                <column name="fecha_nacimiento" nullable="false" precision="-1"/>
+            </basic>
+            <basic name="nacionalidad">
+                <column name="nacionalidad" nullable="false" length="50"/>
+            </basic>
+            <basic name="numeroEquipo">
+                <column name="numero_equipo" nullable="false" precision="-1"/>
+            </basic>
+            <basic name="estado">
+                <column name="estado" nullable="false" length="50"/>
+            </basic>
+            <basic name="ultimaActuacion">
+                <column name="ultima_actuacion" nullable="false" precision="-1"/>
+            </basic>
+            <many-to-one name="equiposByEquipoId" optional="true" target-entity="com.example.ldbc41.models.Equipo">
+                <join-column name="equipo_id" nullable="false" referenced-column-name="id"/>
+            </many-to-one>
+            <one-to-many name="goleadoresById" mapped-by="jugadoresByJugadorId"
+                         target-entity="com.example.ldbc41.models.Goleadores"/>
+            <one-to-many name="sancionesJugadoresById" mapped-by="jugadoresByJugadorId"
+                         target-entity="com.example.ldbc41.models.SancionesJugadores"/>
+            <one-to-many name="sancionesById" mapped-by="jugadoresByJugadorId"
+                         target-entity="com.example.ldbc41.models.Sanciones"/>
+        </attributes>
+    </entity>
+</entity-mappings>

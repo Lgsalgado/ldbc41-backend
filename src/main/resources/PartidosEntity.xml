@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="https://jakarta.ee/xml/ns/persistence/orm"
+                 version="3.0">
+
+    <entity class="com.example.ldbc41.models.PartidosEntity">
+        <table name="partidos" schema="campeonato" catalog="ldbc41"/>
+        <attributes>
+            <id name="id">
+                <column name="id" precision="-1"/>
+            </id>
+            <basic name="fecha">
+                <column name="fecha" nullable="false" precision="-1"/>
+            </basic>
+            <basic name="equipoLocalId">
+                <column name="equipo_local_id" nullable="false" precision="-1"/>
+            </basic>
+            <basic name="equipoVisitanteId">
+                <column name="equipo_visitante_id" nullable="false" precision="-1"/>
+            </basic>
+            <basic name="resultadoLocal">
+                <column name="resultado_local" nullable="false" precision="-1"/>
+            </basic>
+            <basic name="resultadoVisitante">
+                <column name="resultado_visitante" nullable="false" precision="-1"/>
+            </basic>
+            <many-to-one name="equiposByEquipoLocalId" optional="true"
+                         target-entity="com.example.ldbc41.models.EquiposEntity">
+                <join-column name="equipo_local_id" nullable="false" referenced-column-name="id"/>
+            </many-to-one>
+            <many-to-one name="equiposByEquipoVisitanteId" optional="true"
+                         target-entity="com.example.ldbc41.models.EquiposEntity">
+                <join-column name="equipo_visitante_id" nullable="false" referenced-column-name="id"/>
+            </many-to-one>
+            <one-to-many name="arbitrosPartidosById" mapped-by="partidosByPartidoId"
+                         target-entity="com.example.ldbc41.models.ArbitrosPartidosEntity"/>
+        </attributes>
+    </entity>
+    <entity class="com.example.ldbc41.models.ArbitrosEntity">
+        <table name="arbitros" schema="campeonato" catalog="ldbc41"/>
+        <attributes>
+            <id name="id">
+                <column name="id" precision="-1"/>
+            </id>
+            <basic name="nombre">
+                <column name="nombre" nullable="false" length="100"/>
+            </basic>
+            <basic name="nacionalidad">
+                <column name="nacionalidad" nullable="false" length="50"/>
+            </basic>
+        </attributes>
+    </entity>
+</entity-mappings>

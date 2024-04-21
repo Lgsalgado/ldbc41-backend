@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="https://jakarta.ee/xml/ns/persistence/orm"
+                 version="3.0">
+
+    <entity class="com.example.ldbc41.models.Sanciones">
+        <table name="sanciones" schema="disciplina" catalog="ldbc41Pruebas"/>
+        <attributes>
+            <id name="id">
+                <column name="id" precision="-1"/>
+            </id>
+            <basic name="tipoSancion">
+                <column name="tipo_sancion" nullable="false" length="20"/>
+            </basic>
+            <basic name="descripcion">
+                <column name="descripcion" nullable="false"/>
+            </basic>
+            <basic name="jugadorId">
+                <column name="jugador_id" nullable="false" precision="-1"/>
+            </basic>
+            <basic name="equipoId">
+                <column name="equipo_id" nullable="false" precision="-1"/>
+            </basic>
+            <many-to-one name="jugadoresByJugadorId" optional="true"
+                         target-entity="com.example.ldbc41.models.Jugadore">
+                <join-column name="jugador_id" nullable="false" referenced-column-name="id"/>
+            </many-to-one>
+            <many-to-one name="equiposByEquipoId" optional="true" target-entity="com.example.ldbc41.models.Equipo">
+                <join-column name="equipo_id" nullable="false" referenced-column-name="id"/>
+            </many-to-one>
+        </attributes>
+    </entity>
+</entity-mappings>

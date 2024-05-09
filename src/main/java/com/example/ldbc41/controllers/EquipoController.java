@@ -6,12 +6,14 @@ import com.example.ldbc41.services.EquipoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/equipos")
+@PreAuthorize("hasRole('admin_client_role')")
 public class EquipoController {
 
     private final EquipoService equipoService;

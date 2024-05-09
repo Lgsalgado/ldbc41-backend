@@ -17,14 +17,14 @@ public class CorsConfig {
 
         // Configurar las opciones de CORS según tus necesidades
         config.setAllowCredentials(true);
-        config.addAllowedOrigin(urlFront);
-        //config.addAllowedOrigin("+");
+        //config.addAllowedOrigin(urlFront);
+        config.addAllowedOrigin("*");
         config.addAllowedHeader("*");
         config.addAllowedMethod("GET");
         config.addAllowedMethod("POST");
         config.addAllowedMethod("PUT");
         config.addAllowedMethod("DELETE");
-        config.addAllowedOriginPattern(urlFront);
+        //config.addAllowedOriginPattern(urlFront);
         config.addAllowedOriginPattern("*");
 
         source.registerCorsConfiguration("/**", config);

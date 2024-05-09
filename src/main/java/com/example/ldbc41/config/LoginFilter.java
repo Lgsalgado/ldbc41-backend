@@ -16,7 +16,8 @@ import lombok.RequiredArgsConstructor;
 @EnableMethodSecurity
 @RequiredArgsConstructor
 public class LoginFilter {
-
+    @Autowired
+    private final JwtAuthenticationConverter jwtAuthenticationConverter;
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
@@ -25,6 +26,8 @@ public class LoginFilter {
                     http.requestMatchers("/auth/login").permitAll();
                     http.requestMatchers("/keycloak/user/insertUser").permitAll();
                     http.anyRequest().authenticated();
+                }).oauth2ResourceServer(oauth -> {
+                    oauth.jwt(jwt -> jwt.jwtAuthenticationConverter(jwtAuthenticationConverter));
                 })
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .build();

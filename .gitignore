@@ -31,3 +31,9 @@ build/
 
 ### VS Code ###
 .vscode/
+# Ignorar directorios y archivos generados por Maven
+!target/*.jar
+
+# Ignorar archivos generados por IDEs
+.idea/
+.settings/

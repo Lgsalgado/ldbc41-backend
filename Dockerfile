@@ -1,11 +1,14 @@
-# Usa una imagen base con OpenJDK
-FROM openjdk:17-jdk
+# Usa una imagen base de OpenJDK
+FROM openjdk:17-jdk-alpine
 
-# Copia el archivo JAR al contenedor
-COPY ldbc41-0.0.1-SNAPSHOT.jar /app/ldbc41-0.0.1-SNAPSHOT.jar
-
-# Establece el directorio de trabajo
+# Establece el directorio de trabajo dentro del contenedor
 WORKDIR /app
 
-# Comando para ejecutar el archivo JAR
-CMD ["java", "-jar", "ldbc41-0.0.1-SNAPSHOT.jar"]
+# Copia el archivo JAR desde el directorio correcto
+COPY target/ldbc41-0.0.1-SNAPSHOT.jar /app/ldbc41-0.0.1-SNAPSHOT.jar
+
+# Expone el puerto en el que la aplicación va a correr
+EXPOSE 8080
+
+# Define el comando para correr tu aplicación
+ENTRYPOINT ["java", "-jar", "/app/ldbc41-0.0.1-SNAPSHOT.jar"]

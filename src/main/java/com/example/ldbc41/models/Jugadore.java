@@ -1,12 +1,12 @@
 package com.example.ldbc41.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-
-import java.sql.Date;
-import java.time.LocalDate;
-import java.util.Collection;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.time.LocalDate;
+
 @Getter
 @Setter
 @Entity
@@ -20,11 +20,15 @@ public class Jugadore {
     @Column(name = "nombre", length = 100)
     private String nombre;
 
+    @Column(name = "apellido", length = 100)
+    private String apellido;
+
     @Column(name = "cedula", length = 20)
     private String cedula;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "equipo_id")
+    @JsonIgnore // Evita que la referencia al equipo se incluya en la serialización del jugador
     private Equipo equipo;
 
     @Column(name = "fecha_nacimiento")
@@ -41,5 +45,4 @@ public class Jugadore {
 
     @Column(name = "ultima_actuacion")
     private Integer ultimaActuacion;
-
 }

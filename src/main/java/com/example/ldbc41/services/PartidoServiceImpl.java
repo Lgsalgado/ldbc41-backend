@@ -1,15 +1,20 @@
 package com.example.ldbc41.services;
 
+import com.example.ldbc41.dto.EquipoTablaPosicionesDTO;
 import com.example.ldbc41.models.Equipo;
 import com.example.ldbc41.models.Goleadores;
 import com.example.ldbc41.models.Partido;
+import com.example.ldbc41.models.TablaPosiciones;
 import com.example.ldbc41.repository.GoleadoresRepository;
 import com.example.ldbc41.repository.PartidoRepository;
+import com.example.ldbc41.repository.TablaPosicionesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class PartidoServiceImpl implements PartidoService {
@@ -20,14 +25,18 @@ public class PartidoServiceImpl implements PartidoService {
 
     private final GoleadoresRepository goleadoresRepository;
 
+    private final TablaPosicionesRepository tablaPosicionesRepository;
+
     @Autowired
     public PartidoServiceImpl(
             PartidoRepository partidoRepository,
             EquipoService equipoService,
+            TablaPosicionesRepository tablaPosicionesRepository,
             GoleadoresRepository goleadoresRepository) {
         this.equipoService = equipoService;
         this.partidoRepository = partidoRepository;
         this.goleadoresRepository= goleadoresRepository;
+        this.tablaPosicionesRepository=tablaPosicionesRepository;
     }
 
     @Override
@@ -44,7 +53,10 @@ public class PartidoServiceImpl implements PartidoService {
             // Verificar si los equipos pertenecen a la misma categoría
             if (!equipoLocal.getCategoria().equals(equipoVisitante.getCategoria())) {
                 throw new IllegalArgumentException("Los equipos no pertenecen a la misma categoría");
+            }else{
+                String categoria=equipoLocal.getCategoria();
             }
+
             // Verificar si el equipo local y visitante son diferentes
             if (equipoLocal.getId().equals(equipoVisitante.getId())) {
                 throw new IllegalArgumentException("El equipo local y el equipo visitante deben ser diferentes");
@@ -86,5 +98,12 @@ public class PartidoServiceImpl implements PartidoService {
             // Manejar otras excepciones y propagarlas como RuntimeException
             throw new RuntimeException("Error al agregar los goleadores del partido: " + e.getMessage(), e);
         }
+    }
+
+    //tabla posiciiones
+    @Transactional(readOnly = true)
+    public Object[] obtenerTablaDePosicionesPorCategoria(String categoria) {
+        Object[] lista =tablaPosicionesRepository.findEquiposByCategoria(categoria);
+        return lista;
     }
 }

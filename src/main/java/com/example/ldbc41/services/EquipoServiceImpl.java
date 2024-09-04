@@ -7,6 +7,7 @@ import com.example.ldbc41.repository.JugadorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -45,30 +46,49 @@ public class EquipoServiceImpl implements EquipoService {
         return false;
     }
 
+    // Implementación del método para obtener todos los equipos
+    @Override
+    public List<Equipo> obtenerTodosLosEquipos() {
+        return equipoRepository.findAllByOrderByNombreAsc();
+    }
+
     @Override
     public void agregarJugadorAlEquipo(Integer equipoId, Jugadore jugador) {
         try {
-            Equipo equipo = equipoRepository.findById(equipoId).orElseThrow(() -> new IllegalArgumentException("Equipo no encontrado"));
+            // Buscar el equipo por ID, lanzar excepción si no se encuentra
+            Equipo equipo = equipoRepository.findById(equipoId)
+                    .orElseThrow(() -> new IllegalArgumentException("Equipo no encontrado"));
+
+            // Verificar si el jugador ya pertenece a un equipo
             if (!jugadorService.jugadorPerteneceAEquipo(jugador.getCedula())) {
+
+                // Validar que el número de jugador no se repita dentro del equipo
+                for (Jugadore existente : equipo.getJugadores()) {
+                    if (existente.getNumeroEquipo().equals(jugador.getNumeroEquipo())) {
+                        throw new IllegalArgumentException("Ya existe un jugador con el número " + jugador.getNumeroEquipo()
+                                + " en este equipo : "+existente.getNombre()+" "+existente.getApellido());
+                    }
+                }
+                // Asignar el equipo al jugador y guardarlo
                 jugador.setEquipo(equipo);
                 equipo.getJugadores().add(jugador);
+                jugador.setEstado("activo");
+                jugador.setUltimaActuacion(LocalDate.now().getYear());
                 jugadorRepository.save(jugador);
-                //equipoRepository.save(equipo);
             } else {
-                throw new IllegalArgumentException("El jugador ya está en un equipo");
+                // Obtener el nombre del equipo actual del jugador y lanzar excepción con ese detalle
+                String equipoNombre = jugadorService.obtenerNombreEquipoDelJugador(jugador.getCedula());
+                throw new IllegalArgumentException("El jugador con cédula: "+jugador.getCedula()+" ya está en el equipo " + equipoNombre);
             }
         } catch (IllegalArgumentException e) {
-            // Si el jugador ya está en un equipo, se captura la excepción y se devuelve el nombre del equipo
-            if (e.getMessage().equals("El jugador ya está en un equipo")) {
-                String equipoNombre = jugadorService.obtenerNombreEquipoDelJugador(jugador.getCedula());
-                throw new IllegalArgumentException("El jugador ya está en el equipo " + equipoNombre);
-            } else {
-                // Se lanza la excepción si ocurre cualquier otro error
-                throw new IllegalArgumentException("Error al agregar jugador al equipo");
-            }
+            // Re-lanzar la excepción para que el controlador la maneje
+            throw e;
+        } catch (Exception e) {
+            // En caso de cualquier otro error inesperado, lanzar una excepción genérica
+            throw new IllegalArgumentException("Error al agregar jugador al equipo");
         }
-
     }
+
 
     // Método para obtener el nombre del equipo en el que se encuentra el jugador
     private String obtenerNombreEquipoDelJugador(String cedula) {

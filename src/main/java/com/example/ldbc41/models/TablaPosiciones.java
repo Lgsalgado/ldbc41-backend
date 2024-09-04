@@ -1,5 +1,6 @@
 package com.example.ldbc41.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -48,5 +49,6 @@ public class TablaPosiciones {
 
     @ManyToOne
     @JoinColumn(name = "equipo_id", referencedColumnName = "id", insertable = false, updatable = false)
+    @JsonBackReference
     private Equipo equipo;
 }

@@ -1,7 +1,10 @@
 package com.example.ldbc41.controllers;
 
+import com.example.ldbc41.dto.EquipoTablaPosicionesDTO;
+import com.example.ldbc41.models.Equipo;
 import com.example.ldbc41.models.Goleadores;
 import com.example.ldbc41.models.Partido;
+import com.example.ldbc41.models.TablaPosiciones;
 import com.example.ldbc41.services.PartidoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Objects;
 
 @RestController
 @RequestMapping("/partidos")
@@ -48,6 +52,16 @@ public class PartidoController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Error al agregar goleadores: " + e.getMessage());
         } catch (Exception e) {
             // Manejar otros errores internos
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error interno al procesar la solicitud");
+        }
+    }
+    //Tabla de posiciones por categoria
+    @PostMapping("/tabla-posiciones")
+    public ResponseEntity<?> obtenerTablaDePosicionesPorCategoria(@RequestBody Equipo categoria) {
+        try {
+            Object[]posiciones = partidoService.obtenerTablaDePosicionesPorCategoria(categoria.getCategoria());
+            return new ResponseEntity<>(posiciones, HttpStatus.OK);
+        } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error interno al procesar la solicitud");
         }
     }

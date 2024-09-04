@@ -9,11 +9,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/equipos")
-@PreAuthorize("hasRole('admin_client_role')")
+//@PreAuthorize("hasRole('admin_client_role')")
 public class EquipoController {
 
     private final EquipoService equipoService;
@@ -41,14 +43,30 @@ public class EquipoController {
             Optional<Equipo> optionalEquipo = equipoService.buscarEquipoPorId(equipoId);
             if (optionalEquipo.isPresent()) {
                 equipoService.agregarJugadorAlEquipo(equipoId, jugador);
-                return ResponseEntity.ok("Jugador agregado exitosamente");
+                return ResponseEntity.ok(Collections.singletonMap("message", "Jugador agregado exitosamente"));
             } else {
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("El equipo con ID " + equipoId + " no se encontró o no existe");
+                return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                        .body("El equipo con ID " + equipoId + " no se encontró o no existe");
             }
         } catch (IllegalArgumentException e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
+            // Aquí devolvemos un 400 con un mensaje claro para el frontend
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error interno del servidor");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Error interno del servidor");
         }
     }
+
+
+    // Endpoint para obtener todos los equipos
+    @GetMapping("/todos")
+    public ResponseEntity<?> obtenerTodosLosEquipos() {
+        try {
+            List<Equipo> equipos = equipoService.obtenerTodosLosEquipos();
+            return ResponseEntity.ok(equipos);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error interno del servidor: " + e.getMessage());
+        }
+    }
+
 }

@@ -1,0 +1,420 @@
+C:\Users\Gabriel>nmap -sV -p- -T4 -A 192.168.18.1 192.168.18.5 192.168.18.11 192.168.18.15 192.168.18.16 192.168.18.18 192.168.18.27 192.168.18.30
+Starting Nmap 7.95 ( https://nmap.org ) at 2024-09-01 20:42 Hora de verano del Centro
+Nmap scan report for 192.168.18.1
+Host is up (0.0029s latency).
+Not shown: 65527 closed tcp ports (reset)
+PORT      STATE    SERVICE    VERSION
+21/tcp    filtered ftp
+22/tcp    filtered ssh
+23/tcp    filtered telnet
+53/tcp    open     domain     (generic dns response: NXDOMAIN)
+| fingerprint-strings:
+|   DNS-SD-TCP:
+|     _services
+|     _dns-sd
+|     _udp
+|     local
+|     root-servers
+|     nstld
+|_    verisign-grs
+80/tcp    open     ssl/http
+| ssl-cert: Subject: commonName=ont.huawei.com/organizationName=Huawei/countryName=CN
+| Not valid before: 2020-08-25T06:59:49
+|_Not valid after:  2030-08-23T06:59:49
+|_ssl-date: 1981-01-26T04:36:15+00:00; -43y219d21h13m38s from scanner time.
+|_http-title: Site doesn't have a title (text/html; charset=UTF-8).
+8022/tcp  filtered oa-system
+37443/tcp open     upnp       Portable SDK for UPnP 1.14.12 (Linux 5.10.0; UPnP 1.0)
+37444/tcp open     tcpwrapped
+1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
+SF-Port53-TCP:V=7.95%I=7%D=9/1%Time=66D51985%P=i686-pc-windows-windows%r(D
+SF:NS-SD-TCP,7B,"\0y\0\0\x80\x83\0\x01\0\0\0\x01\0\0\t_services\x07_dns-sd
+SF:\x04_udp\x05local\0\0\x0c\0\x01\0\0\x06\0\x01\0\0\x1cP\0@\x01a\x0croot-
+SF:servers\x03net\0\x05nstld\x0cverisign-grs\x03com\0x\xa5\)\xf5\0\0\x07\x
+SF:08\0\0\x03\x84\0\t:\x80\0\x01Q\x80");
+MAC Address: B8:D6:F6:D1:81:7C (Huawei Technologies)
+No exact OS matches for host (If you know what OS is running on it, see https://nmap.org/submit/ ).
+TCP/IP fingerprint:
+OS:SCAN(V=7.95%E=4%D=9/1%OT=53%CT=1%CU=34840%PV=Y%DS=1%DC=D%G=Y%M=B8D6F6%TM
+OS:=66D519C1%P=i686-pc-windows-windows)SEQ(SP=102%GCD=1%ISR=108%TI=Z%CI=Z%I
+OS:I=I%TS=A)SEQ(SP=104%GCD=1%ISR=10C%TI=Z%CI=Z%II=I%TS=A)SEQ(SP=107%GCD=1%I
+OS:SR=108%TI=Z%CI=Z%II=I%TS=A)SEQ(SP=107%GCD=1%ISR=10C%TI=Z%CI=Z%II=I%TS=A)
+OS:SEQ(SP=FF%GCD=1%ISR=10C%TI=Z%CI=Z%II=I%TS=A)OPS(O1=M5B4ST11NW2%O2=M5B4ST
+OS:11NW2%O3=M5B4NNT11NW2%O4=M5B4ST11NW2%O5=M5B4ST11NW2%O6=M5B4ST11)WIN(W1=A
+OS:9B0%W2=A9B0%W3=A9B0%W4=A9B0%W5=A9B0%W6=A9B0)ECN(R=Y%DF=Y%T=40%W=A564%O=M
+OS:5B4NNSNW2%CC=Y%Q=)T1(R=Y%DF=Y%T=40%S=O%A=S+%F=AS%RD=0%Q=)T2(R=N)T3(R=N)T
+OS:4(R=Y%DF=Y%T=40%W=0%S=A%A=Z%F=R%O=%RD=0%Q=)T5(R=Y%DF=Y%T=40%W=0%S=Z%A=S+
+OS:%F=AR%O=%RD=0%Q=)T6(R=Y%DF=Y%T=40%W=0%S=A%A=Z%F=R%O=%RD=0%Q=)T7(R=Y%DF=Y
+OS:%T=40%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)U1(R=Y%DF=N%T=40%IPL=164%UN=0%RIPL=G%
+OS:RID=G%RIPCK=G%RUCK=G%RUD=G)IE(R=Y%DFI=N%T=40%CD=S)
+
+Network Distance: 1 hop
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel:5.10.0
+
+Host script results:
+|_clock-skew: -15924d21h13m38s
+
+TRACEROUTE
+HOP RTT     ADDRESS
+1   2.90 ms 192.168.18.1
+
+Nmap scan report for 192.168.18.11
+Host is up (0.0084s latency).
+Not shown: 65529 closed tcp ports (reset)
+PORT      STATE SERVICE     VERSION
+8009/tcp  open  tcpwrapped
+|_ajp-methods: Failed to get a valid response for the OPTION request
+32861/tcp open  tcpwrapped
+36117/tcp open  http        Amazon FireTV Stick
+|_http-title: Site doesn't have a title.
+55442/tcp open  nagios-nsca Nagios NSCA
+55443/tcp open  ssl/unknown
+60000/tcp open  tcpwrapped
+MAC Address: 6C:99:9D:76:38:E3 (Amazon Technologies)
+Device type: phone
+Running: Google Android 10.X|4.X|5.X|6.X, Linux 4.X|3.X
+OS CPE: cpe:/o:google:android:10 cpe:/o:linux:linux_kernel:4 cpe:/o:google:android:4 cpe:/o:google:android:5 cpe:/o:google:android:6 cpe:/o:linux:linux_kernel:3
+OS details: Android 9 - 10 (Linux 4.9 - 4.14), Android 4.1 - 6.0 (Linux 3.4 - 3.14)
+Network Distance: 1 hop
+Service Info: Device: media device
+
+TRACEROUTE
+HOP RTT     ADDRESS
+1   8.45 ms 192.168.18.11
+
+Nmap scan report for 192.168.18.16
+Host is up (0.026s latency).
+Not shown: 65532 closed tcp ports (reset)
+PORT      STATE SERVICE VERSION
+7000/tcp  open  rtsp    AirTunes rtspd 377.40.00
+|_rtsp-methods: ERROR: Script execution failed (use -d to debug)
+|_irc-info: Unable to open connection
+8060/tcp  open  upnp
+| fingerprint-strings:
+|   FourOhFourRequest:
+|     HTTP/1.1 404 Not Found
+|     Server: Roku/13.1.4 UPnP/1.0 Roku/13.1.4
+|     Content-Length: 0
+|   GetRequest:
+|     HTTP/1.1 200 OK
+|     Server: Roku/13.1.4 UPnP/1.0 Roku/13.1.4
+|     Content-Length: 1307
+|     Cache-Control: no-cache
+|     Content-Type: text/xml; charset="utf-8"
+|     <?xml version="1.0"?>
+|     <root xmlns="urn:schemas-upnp-org:device-1-0">
+|     <specVersion>
+|     <major>1</major>
+|     <minor>0</minor>
+|     </specVersion>
+|     <device>
+|     <deviceType>urn:roku-com:device:player:1-0</deviceType>
+|     <friendlyName>Roku Express 4K+</friendlyName>
+|     <manufacturer>Roku</manufacturer>
+|     <manufacturerURL>http://www.roku.com/</manufacturerURL>
+|     <modelDescription>Roku Streaming Player Network Media</modelDescription>
+|     <modelName>3941X2</modelName>
+|     <modelNumber>3941X2</modelNumber>
+|     <modelURL>http://www.roku.com/</modelURL>
+|     <serialNumber>X0220023M3LK</serialNumber>
+|     <UDN>uuid:28002080-0000-1000-8017-a8b57ce5cf5d</UDN>
+|     <iconList>
+|     <icon>
+|     <mimetype>image/png</mimetype>
+|     <width>360</width>
+|     <height>219</height>
+|     <depth>8</depth>
+|     <url>device-ima
+|   HTTPOptions:
+|     HTTP/1.1 200 OK
+|     Server: Roku/13.1.4 UPnP/1.0 Roku/13.1.4
+|_    Content-Length: 0
+45163/tcp open  unknown
+| fingerprint-strings:
+|   FourOhFourRequest, GetRequest, HTTPOptions:
+|     HTTP/1.0 404 Not Found
+|     Content-Length: 0
+|_    Content-Type: text/plain
+2 services unrecognized despite returning data. If you know the service/version, please submit the following fingerprints at https://nmap.org/cgi-bin/submit.cgi?new-service :
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port8060-TCP:V=7.95%I=7%D=9/1%Time=66D5197D%P=i686-pc-windows-windows%r
+SF:(GetRequest,5B0,"HTTP/1\.1\x20200\x20OK\r\nServer:\x20Roku/13\.1\.4\x20
+SF:UPnP/1\.0\x20Roku/13\.1\.4\r\nContent-Length:\x201307\r\nCache-Control:
+SF:\x20no-cache\r\nContent-Type:\x20text/xml;\x20charset=\"utf-8\"\r\n\r\n
+SF:<\?xml\x20version=\"1\.0\"\?>\r\n<root\x20xmlns=\"urn:schemas-upnp-org:
+SF:device-1-0\">\r\n<specVersion>\r\n<major>1</major>\r\n<minor>0</minor>\
+SF:r\n</specVersion>\r\n<device>\r\n<deviceType>urn:roku-com:device:player
+SF::1-0</deviceType>\r\n<friendlyName>Roku\x20Express\x204K\+</friendlyNam
+SF:e>\r\n<manufacturer>Roku</manufacturer>\r\n<manufacturerURL>http://www\
+SF:.roku\.com/</manufacturerURL>\r\n<modelDescription>Roku\x20Streaming\x2
+SF:0Player\x20Network\x20Media</modelDescription>\r\n<modelName>3941X2</mo
+SF:delName>\r\n<modelNumber>3941X2</modelNumber>\r\n<modelURL>http://www\.
+SF:roku\.com/</modelURL>\r\n<serialNumber>X0220023M3LK</serialNumber>\r\n<
+SF:UDN>uuid:28002080-0000-1000-8017-a8b57ce5cf5d</UDN>\r\n<iconList>\r\n<i
+SF:con>\r\n<mimetype>image/png</mimetype>\r\n<width>360</width>\r\n<height
+SF:>219</height>\r\n<depth>8</depth>\r\n<url>device-ima")%r(HTTPOptions,50
+SF:,"HTTP/1\.1\x20200\x20OK\r\nServer:\x20Roku/13\.1\.4\x20UPnP/1\.0\x20Ro
+SF:ku/13\.1\.4\r\nContent-Length:\x200\r\n\r\n")%r(FourOhFourRequest,57,"H
+SF:TTP/1\.1\x20404\x20Not\x20Found\r\nServer:\x20Roku/13\.1\.4\x20UPnP/1\.
+SF:0\x20Roku/13\.1\.4\r\nContent-Length:\x200\r\n\r\n");
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port45163-TCP:V=7.95%I=7%D=9/1%Time=66D51980%P=i686-pc-windows-windows%
+SF:r(GetRequest,47,"HTTP/1\.0\x20404\x20Not\x20Found\r\nContent-Length:\x2
+SF:00\r\nContent-Type:\x20text/plain\r\n\r\n")%r(HTTPOptions,47,"HTTP/1\.0
+SF:\x20404\x20Not\x20Found\r\nContent-Length:\x200\r\nContent-Type:\x20tex
+SF:t/plain\r\n\r\n")%r(FourOhFourRequest,47,"HTTP/1\.0\x20404\x20Not\x20Fo
+SF:und\r\nContent-Length:\x200\r\nContent-Type:\x20text/plain\r\n\r\n");
+MAC Address: A8:B5:7C:E5:CF:5D (Roku)
+Device type: general purpose
+Running: Linux 5.X
+OS CPE: cpe:/o:linux:linux_kernel:5
+OS details: Linux 5.10 - 5.19
+Network Distance: 1 hop
+
+TRACEROUTE
+HOP RTT      ADDRESS
+1   26.31 ms 192.168.18.16
+
+Nmap scan report for 192.168.18.18
+Host is up (0.0052s latency).
+Not shown: 65531 closed tcp ports (reset)
+PORT    STATE    SERVICE    VERSION
+22/tcp  open     ssh        Dropbear sshd 2012.55 (protocol 2.0)
+| ssh-hostkey:
+|   1024 1d:24:4b:8b:e4:0b:01:58:8e:55:75:b2:4d:7a:e0:33 (DSA)
+|_  1039 83:7b:36:e4:32:79:47:a2:c6:19:65:33:6c:78:bc:d3 (RSA)
+53/tcp  filtered domain
+80/tcp  open     http       Router Webserver
+|_http-server-header: Router Webserver
+| fingerprint-strings:
+|   GetRequest:
+|     HTTP/1.1 200 OK
+|     Server: Router Webserver
+|     Connection: close
+|     Content-Type: text/html
+|     WWW-Authenticate: Basic realm="TP-Link Wireless N Router WR940N"
+|     <!DOCTYPE html>
+|     <META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+|     <HTML>
+|     <HEAD><TITLE>TL-WR940N</TITLE>
+|     <META http-equiv=Pragma content=no-cache>
+|     <META http-equiv=Expires content="wed, 26 Feb 1997 08:21:57 GMT">
+|     <SCRIPT language="javascript" type="text/javascript"><!--
+|     //--></SCRIPT>
+|     <!DOCTYPE html>
+|     <SCRIPT language="javascript" type="text/javascript">
+|     httpOriginalPwd = new Array(0, 0,0 );
+|     </SCRIPT>
+|     <!DOCTYPE html>
+|     <SCRIPT language="javascript" type="text/javascript">
+|     httpAutErrorArray = new Array(3, 1, "http://192.168.18.18", 0,0 );
+|     </SCRIPT>
+|     <!DOCTYPE html>
+|     <SCRIPT language="javascript" type="text/javascript">
+|     frameQrPara = new Array(0,
+|     </SCRIPT>
+|     <!DOCTYPE html>
+|     <SCRIPT language="javascript" t
+|   HTTPOptions:
+|     HTTP/1.1 501 Not Implemented
+|     Server: Router Webserver
+|     Connection: close
+|     WWW-Authenticate: Basic realm="TP-Link Wireless N Router WR940N"
+|     Content-Type: text/html
+|     <Script language=JavaScript>
+|     errorCode = 501;
+|     errorNote = "<p>File not found</p>";
+|     homeSite = "http://192.168.18.18";
+|     </script>
+|     <HTML>
+|     <HEAD>
+|     <TITLE>Error</TITLE>
+|     <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+|     <SCRIPT language="javascript" src="../dynaform/common.js" type="text/javascript"></SCRIPT>
+|     <script type="text/javascript" src="../dynaform/encrypt.js"></script>
+|     <script type="text/javascript" src="../dynaform/cryptoJS.min.js"></script>
+|     <script type="text/javascript" src="../dynaform/tpEncrypt.js"></script>
+|     </HEAD>
+|     <BODY>
+|     <DIV style="padding:0px 30px;">
+|     <script type="text/javascript">
+|     connection=getElesByName(document, "encryptedData");
+|_    for(var i=0;i<conn
+|_http-title: TL-WR940N
+443/tcp open     ssl/https?
+| ssl-cert: Subject: commonName=tplinkwifi.net/organizationName=RD Software/stateOrProvinceName=GuangDong/countryName=CN
+| Not valid before: 2018-01-14T09:27:09
+|_Not valid after:  2019-05-30T09:27:09
+|_ssl-date: TLS randomness does not represent time
+1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
+SF-Port80-TCP:V=7.95%I=7%D=9/1%Time=66D5197B%P=i686-pc-windows-windows%r(G
+SF:etRequest,150C,"HTTP/1\.1\x20200\x20OK\r\nServer:\x20Router\x20Webserve
+SF:r\r\nConnection:\x20close\r\nContent-Type:\x20text/html\r\nWWW-Authenti
+SF:cate:\x20Basic\x20realm=\"TP-Link\x20Wireless\x20N\x20Router\x20WR940N\
+SF:"\r\n\r\n<!DOCTYPE\x20html>\n<META\x20http-equiv=Content-Type\x20conten
+SF:t=\"text/html;\x20charset=iso-8859-1\">\n<HTML>\n<HEAD><TITLE>TL-WR940N
+SF:</TITLE>\n<META\x20http-equiv=Pragma\x20content=no-cache>\n<META\x20htt
+SF:p-equiv=Expires\x20content=\"wed,\x2026\x20Feb\x201997\x2008:21:57\x20G
+SF:MT\">\n<SCRIPT\x20language=\"javascript\"\x20type=\"text/javascript\"><
+SF:!--\n//--></SCRIPT>\n<!DOCTYPE\x20html>\n<SCRIPT\x20language=\"javascri
+SF:pt\"\x20type=\"text/javascript\">\nvar\x20httpOriginalPwd\x20=\x20new\x
+SF:20Array\(0,\x200,0\x20\);\n</SCRIPT>\n<!DOCTYPE\x20html>\n<SCRIPT\x20la
+SF:nguage=\"javascript\"\x20type=\"text/javascript\">\nvar\x20httpAutError
+SF:Array\x20=\x20new\x20Array\(3,\x201,\x20\"http://192\.168\.18\.18\",\x2
+SF:00,0\x20\);\n</SCRIPT>\n<!DOCTYPE\x20html>\n<SCRIPT\x20language=\"javas
+SF:cript\"\x20type=\"text/javascript\">\nvar\x20frameQrPara\x20=\x20new\x2
+SF:0Array\(0,\r\n0,0\x20\);\n</SCRIPT>\n<!DOCTYPE\x20html>\n<SCRIPT\x20lan
+SF:guage=\"javascript\"\x20t")%r(HTTPOptions,521,"HTTP/1\.1\x20501\x20Not\
+SF:x20Implemented\r\nServer:\x20Router\x20Webserver\r\nConnection:\x20clos
+SF:e\r\nWWW-Authenticate:\x20Basic\x20realm=\"TP-Link\x20Wireless\x20N\x20
+SF:Router\x20WR940N\"\r\nContent-Type:\x20text/html\r\n\r\n<Script\x20lang
+SF:uage=JavaScript>\nvar\x20errorCode\x20=\x20501;\r\nvar\x20errorNote\x20
+SF:=\x20\"<p>File\x20not\x20found</p>\";\r\nvar\x20homeSite\x20=\x20\"http
+SF:://192\.168\.18\.18\";\r\n</script>\n\r\n<HTML>\r\n<HEAD>\r\n<TITLE>Err
+SF:or</TITLE>\r\n<META\x20http-equiv=\"Content-Type\"\x20content=\"text/ht
+SF:ml;\x20charset=iso-8859-1\">\r\n\t<SCRIPT\x20language=\"javascript\"\x2
+SF:0src=\"\.\./dynaform/common\.js\"\x20type=\"text/javascript\"></SCRIPT>
+SF:\r\n\t<script\x20type=\"text/javascript\"\x20src=\"\.\./dynaform/encryp
+SF:t\.js\"></script>\r\n\t<script\x20type=\"text/javascript\"\x20src=\"\.\
+SF:./dynaform/cryptoJS\.min\.js\"></script>\r\n\t<script\x20type=\"text/ja
+SF:vascript\"\x20src=\"\.\./dynaform/tpEncrypt\.js\"></script>\r\n</HEAD>\
+SF:r\n<BODY>\r\n<DIV\x20style=\"padding:0px\x2030px;\">\r\n<script\x20type
+SF:=\"text/javascript\">\r\nvar\x20connection=getElesByName\(document,\x20
+SF:\"encryptedData\"\);\r\nfor\(var\x20i=0;i<conn");
+MAC Address: 60:32:B1:77:E6:34 (TP-Link Technologies)
+Device type: general purpose
+Running: Linux 2.6.X
+OS CPE: cpe:/o:linux:linux_kernel:2.6
+OS details: Linux 2.6.17 - 2.6.36
+Network Distance: 1 hop
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+TRACEROUTE
+HOP RTT     ADDRESS
+1   5.24 ms 192.168.18.18
+
+WARNING: Service 192.168.18.30:9000 had already soft-matched rtsp, but now soft-matched sip; ignoring second value
+WARNING: Service 192.168.18.30:8888 had already soft-matched rtsp, but now soft-matched sip; ignoring second value
+Nmap scan report for 192.168.18.30
+Host is up (0.00049s latency).
+Not shown: 65516 closed tcp ports (reset)
+PORT      STATE    SERVICE       VERSION
+135/tcp   open     msrpc         Microsoft Windows RPC
+137/tcp   filtered netbios-ns
+139/tcp   open     netbios-ssn   Microsoft Windows netbios-ssn
+445/tcp   open     microsoft-ds?
+5040/tcp  open     unknown
+5357/tcp  open     http          Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+|_http-title: Service Unavailable
+|_http-server-header: Microsoft-HTTPAPI/2.0
+5432/tcp  open     postgresql    PostgreSQL DB 9.6.0 or later
+7680/tcp  open     pando-pub?
+8888/tcp  open     rtsp
+|_rtsp-methods: ERROR: Script execution failed (use -d to debug)
+| fingerprint-strings:
+|   FourOhFourRequest:
+|     HTTP/1.0 404 Not Found
+|     content-length: 146
+|     Content-Type: application/json
+|     {"error":"Unable to find matching target resource method","error_description":"For more on this error consult the server log at the debug level."}
+|   GetRequest:
+|     HTTP/1.0 500 Internal Server Error
+|     content-length: 113
+|     Content-Type: application/json
+|     Referrer-Policy: no-referrer
+|     Strict-Transport-Security: max-age=31536000; includeSubDomains
+|     X-Content-Type-Options: nosniff
+|     X-Frame-Options: SAMEORIGIN
+|     X-XSS-Protection: 1; mode=block
+|     {"error":"unknown_error","error_description":"For more on this error consult the server log at the debug level."}
+|   HTTPOptions:
+|     HTTP/1.0 200 OK
+|     Allow: HEAD, POST, GET, OPTIONS
+|     content-length: 0
+|   LSCP:
+|     HTTP/1.0 400 Bad Request
+|     content-length: 0
+|   RTSPRequest:
+|     RTSP/1.0 200 OK
+|     Allow: HEAD, POST, GET, OPTIONS
+|     content-length: 0
+|   SIPOptions:
+|     SIP/2.0 404 Not Found
+|_    content-length: 0
+9000/tcp  open     rtsp
+|_rtsp-methods: ERROR: Script execution failed (use -d to debug)
+| fingerprint-strings:
+|   FourOhFourRequest:
+|     HTTP/1.0 404 Not Found
+|     content-type: text/html; charset=utf-8
+|     content-length: 53
+|     <html><body><h1>Resource not found</h1></body></html>
+|   GetRequest, HTTPOptions:
+|     HTTP/1.0 200 OK
+|     content-length: 29
+|     Keycloak Management Interface
+|   RTSPRequest:
+|     RTSP/1.0 200 OK
+|     content-length: 29
+|     Keycloak Management Interface
+|   SIPOptions:
+|     SIP/2.0 404 Not Found
+|_    content-length: 0
+15611/tcp open     websocket     Ogar agar.io server
+49664/tcp open     msrpc         Microsoft Windows RPC
+49665/tcp open     msrpc         Microsoft Windows RPC
+49666/tcp open     msrpc         Microsoft Windows RPC
+49667/tcp open     msrpc         Microsoft Windows RPC
+49668/tcp open     msrpc         Microsoft Windows RPC
+49669/tcp open     msrpc         Microsoft Windows RPC
+49674/tcp open     msrpc         Microsoft Windows RPC
+59869/tcp open     unknown
+2 services unrecognized despite returning data. If you know the service/version, please submit the following fingerprints at https://nmap.org/cgi-bin/submit.cgi?new-service :
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port8888-TCP:V=7.95%I=7%D=9/1%Time=66D519CC%P=i686-pc-windows-windows%r
+SF:(GetRequest,189,"HTTP/1\.0\x20500\x20Internal\x20Server\x20Error\r\ncon
+SF:tent-length:\x20113\r\nContent-Type:\x20application/json\r\nReferrer-Po
+SF:licy:\x20no-referrer\r\nStrict-Transport-Security:\x20max-age=31536000;
+SF:\x20includeSubDomains\r\nX-Content-Type-Options:\x20nosniff\r\nX-Frame-
+SF:Options:\x20SAMEORIGIN\r\nX-XSS-Protection:\x201;\x20mode=block\r\n\r\n
+SF:{\"error\":\"unknown_error\",\"error_description\":\"For\x20more\x20on\
+SF:x20this\x20error\x20consult\x20the\x20server\x20log\x20at\x20the\x20deb
+SF:ug\x20level\.\"}")%r(HTTPOptions,47,"HTTP/1\.0\x20200\x20OK\r\nAllow:\x
+SF:20HEAD,\x20POST,\x20GET,\x20OPTIONS\r\ncontent-length:\x200\r\n\r\n")%r
+SF:(FourOhFourRequest,E1,"HTTP/1\.0\x20404\x20Not\x20Found\r\ncontent-leng
+SF:th:\x20146\r\nContent-Type:\x20application/json\r\n\r\n{\"error\":\"Una
+SF:ble\x20to\x20find\x20matching\x20target\x20resource\x20method\",\"error
+SF:_description\":\"For\x20more\x20on\x20this\x20error\x20consult\x20the\x
+SF:20server\x20log\x20at\x20the\x20debug\x20level\.\"}")%r(LSCP,2F,"HTTP/1
+SF:\.0\x20400\x20Bad\x20Request\r\ncontent-length:\x200\r\n\r\n")%r(RTSPRe
+SF:quest,47,"RTSP/1\.0\x20200\x20OK\r\nAllow:\x20HEAD,\x20POST,\x20GET,\x2
+SF:0OPTIONS\r\ncontent-length:\x200\r\n\r\n")%r(SIPOptions,2C,"SIP/2\.0\x2
+SF:0404\x20Not\x20Found\r\ncontent-length:\x200\r\n\r\n");
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port9000-TCP:V=7.95%I=7%D=9/1%Time=66D519D1%P=i686-pc-windows-windows%r
+SF:(GetRequest,44,"HTTP/1\.0\x20200\x20OK\r\ncontent-length:\x2029\r\n\r\n
+SF:Keycloak\x20Management\x20Interface")%r(HTTPOptions,44,"HTTP/1\.0\x2020
+SF:0\x20OK\r\ncontent-length:\x2029\r\n\r\nKeycloak\x20Management\x20Inter
+SF:face")%r(RTSPRequest,44,"RTSP/1\.0\x20200\x20OK\r\ncontent-length:\x202
+SF:9\r\n\r\nKeycloak\x20Management\x20Interface")%r(FourOhFourRequest,8B,"
+SF:HTTP/1\.0\x20404\x20Not\x20Found\r\ncontent-type:\x20text/html;\x20char
+SF:set=utf-8\r\ncontent-length:\x2053\r\n\r\n<html><body><h1>Resource\x20n
+SF:ot\x20found</h1></body></html>")%r(SIPOptions,2C,"SIP/2\.0\x20404\x20No
+SF:t\x20Found\r\ncontent-length:\x200\r\n\r\n");
+Device type: general purpose
+Running: Microsoft Windows 10|11
+OS CPE: cpe:/o:microsoft:windows_10 cpe:/o:microsoft:windows_11
+OS details: Microsoft Windows 10 1607 - 11 23H2
+Network Distance: 0 hops
+Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Host script results:
+| smb2-security-mode:
+|   3:1:1:
+|_    Message signing enabled but not required
+| smb2-time:
+|   date: 2024-09-02T01:52:39
+|_  start_date: N/A
+
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 8 IP addresses (5 hosts up) scanned in 638.25 seconds

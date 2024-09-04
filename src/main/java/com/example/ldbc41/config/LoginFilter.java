@@ -10,6 +10,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Configuration
 @EnableWebSecurity
@@ -25,6 +26,9 @@ public class LoginFilter {
                 .authorizeHttpRequests(http -> {
                     http.requestMatchers("/auth/login").permitAll();
                     http.requestMatchers("/keycloak/user/insertUser").permitAll();
+                    http.requestMatchers("/equipos/todos").permitAll();
+                    http.requestMatchers("/paises").permitAll();
+                    http.requestMatchers("/equipos/{equipoId}/jugadores").permitAll();
                     http.anyRequest().authenticated();
                 }).oauth2ResourceServer(oauth -> {
                     oauth.jwt(jwt -> jwt.jwtAuthenticationConverter(jwtAuthenticationConverter));

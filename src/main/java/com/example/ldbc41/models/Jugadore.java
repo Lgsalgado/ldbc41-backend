@@ -45,4 +45,11 @@ public class Jugadore {
 
     @Column(name = "ultima_actuacion")
     private Integer ultimaActuacion;
+
+    // Nuevas columnas para almacenar las URLs de las fotos
+    @Column(name = "foto", length = 255)
+    private String foto;
+
+    @Column(name = "cedula_img", length = 255)
+    private String cedulaImg;
 }

@@ -5,8 +5,11 @@ import com.example.ldbc41.models.Jugadore;
 import com.example.ldbc41.repository.EquipoRepository;
 import com.example.ldbc41.repository.JugadorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -20,14 +23,20 @@ public class EquipoServiceImpl implements EquipoService {
     private final JugadorRepository jugadorRepository;
     @Autowired
     private JugadorService jugadorService;
+    @Autowired
+    final GoogleCloudStorageService googleCloudStorageService;
+
+    @Value("${var.bucket}")
+    private String bucket;
 
     @Autowired
     public EquipoServiceImpl(
             EquipoRepository equipoRepository,
-            JugadorRepository jugadorRepository
+            JugadorRepository jugadorRepository, GoogleCloudStorageService googleCloudStorageService
     ) {
         this.equipoRepository = equipoRepository;
         this.jugadorRepository= jugadorRepository;
+        this.googleCloudStorageService = googleCloudStorageService;
     }
     @Override
     public Optional<Equipo> buscarEquipoPorId(Integer id) {
@@ -50,6 +59,35 @@ public class EquipoServiceImpl implements EquipoService {
     @Override
     public List<Equipo> obtenerTodosLosEquipos() {
         return equipoRepository.findAllByOrderByNombreAsc();
+    }
+
+
+    public Jugadore guardarJugador(
+            String nombre, String apellido, LocalDate fechaNacimiento, String nacionalidad,
+            int numeroEquipo, String cedula, Integer equipoId,
+            MultipartFile foto, MultipartFile cedulaImg) throws IOException {
+
+        Equipo equipo = equipoRepository.findById(equipoId)
+                .orElseThrow(() -> new RuntimeException("Equipo no encontrado"));
+
+        String urlFoto= googleCloudStorageService.uploadFile(foto,bucket);
+        String urlFotoCedula= googleCloudStorageService.uploadFile(cedulaImg,bucket);
+
+        Jugadore jugador = new Jugadore();
+        jugador.setNombre(nombre);
+        jugador.setApellido(apellido);
+        jugador.setFechaNacimiento(fechaNacimiento);
+        jugador.setNacionalidad(nacionalidad);
+        jugador.setNumeroEquipo(numeroEquipo);
+        jugador.setCedula(cedula);
+        jugador.setEquipo(equipo);
+        jugador.setFoto(urlFoto);
+        jugador.setCedulaImg(urlFotoCedula);
+        jugador.setEquipo(equipo);
+        jugador.setEstado("activo");
+        jugador.setUltimaActuacion(LocalDate.now().getYear());
+
+        return jugadorRepository.save(jugador);
     }
 
     @Override

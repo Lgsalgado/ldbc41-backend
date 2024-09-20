@@ -27,8 +27,12 @@ public class LoginFilter {
                     http.requestMatchers("/auth/login").permitAll();
                     http.requestMatchers("/keycloak/user/insertUser").permitAll();
                     http.requestMatchers("/equipos/todos").permitAll();
-                    http.requestMatchers("/paises").permitAll();
+                    //http.requestMatchers("/paises").permitAll();
                     http.requestMatchers("/equipos/{equipoId}/jugadores").permitAll();
+                    http.requestMatchers("/equipos/{equipoId}/jugadorCalificacion").permitAll();
+                    //http.requestMatchers("/upload/image").permitAll();
+                   // http.requestMatchers("/downloadFile").permitAll();
+                    http.requestMatchers("/api/jugadores/{cedula}").permitAll();
                     http.anyRequest().authenticated();
                 }).oauth2ResourceServer(oauth -> {
                     oauth.jwt(jwt -> jwt.jwtAuthenticationConverter(jwtAuthenticationConverter));

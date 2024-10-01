@@ -30,7 +30,7 @@ public class LoginFilter {
                     http.requestMatchers("/paises").permitAll();
                     http.requestMatchers("/equipos/{equipoId}/jugadores").permitAll();
                     http.requestMatchers("/equipos/{equipoId}/jugadorCalificacion").permitAll();
-                    //http.requestMatchers("/upload/image").permitAll();
+                    http.requestMatchers("/upload/image").permitAll();
                    // http.requestMatchers("/downloadFile").permitAll();
                     http.requestMatchers("/api/jugadores/{cedula}").permitAll();
                     http.anyRequest().authenticated();

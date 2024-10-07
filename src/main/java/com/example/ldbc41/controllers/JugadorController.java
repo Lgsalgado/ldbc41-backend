@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -27,5 +28,14 @@ public class JugadorController {
         String equipo=jugadorService.obtenerNombreEquipoDelJugador(cedula);
 
         return new ResponseEntity<>(jugador, HttpStatus.ACCEPTED);
+    }
+    // Endpoint para obtener jugadores por equipoId
+    @GetMapping("/equipo/{equipoId}")
+    public ResponseEntity<List<Jugadore>> obtenerJugadoresPorEquipoId(@PathVariable Integer equipoId) {
+        List<Jugadore> jugadores = jugadorService.buscarJugadoresPorEquipoId(equipoId);
+        if (jugadores.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(jugadores, HttpStatus.OK);
     }
 }

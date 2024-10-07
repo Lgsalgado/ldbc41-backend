@@ -4,6 +4,7 @@ import com.example.ldbc41.repository.JugadorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -35,6 +36,13 @@ public class JugadorServiceImpl implements JugadorService {
         } else {
             return "El jugador no pertenece a ningún equipo";
         }
+    }
+
+
+    // Método para buscar jugadores por equipoId
+    @Override
+    public List<Jugadore> buscarJugadoresPorEquipoId(Integer equipoId) {
+        return jugadorRepository.findByEquipoId(equipoId);
     }
 }
 

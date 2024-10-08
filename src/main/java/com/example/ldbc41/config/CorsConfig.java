@@ -21,7 +21,7 @@ public class CorsConfig {
 
         // Configurar las opciones de CORS
         config.setAllowCredentials(true);
-        config.addAllowedOrigin("*"); // Permitir solo el origen especificado
+        config.addAllowedOrigin(urlFront); // Permitir solo el origen especificado
         config.addAllowedHeader("*");
         config.addAllowedMethod("*"); // Permitir todos los métodos HTTP
 
